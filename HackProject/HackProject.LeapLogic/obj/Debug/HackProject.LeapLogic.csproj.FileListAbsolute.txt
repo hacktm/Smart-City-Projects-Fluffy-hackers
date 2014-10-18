@@ -1,0 +1,6 @@
+D:\Projects\HaufeHackTm\HackProject.View\HackProject.LeapLogic\bin\Debug\HackProject.LeapLogic.dll
+D:\Projects\HaufeHackTm\HackProject.View\HackProject.LeapLogic\bin\Debug\HackProject.LeapLogic.pdb
+D:\Projects\HaufeHackTm\HackProject.View\HackProject.LeapLogic\bin\Debug\LeapCSharp.NET4.0.dll
+D:\Projects\HaufeHackTm\HackProject.View\HackProject.LeapLogic\obj\Debug\HackProject.LeapLogic.csprojResolveAssemblyReference.cache
+D:\Projects\HaufeHackTm\HackProject.View\HackProject.LeapLogic\obj\Debug\HackProject.LeapLogic.dll
+D:\Projects\HaufeHackTm\HackProject.View\HackProject.LeapLogic\obj\Debug\HackProject.LeapLogic.pdb

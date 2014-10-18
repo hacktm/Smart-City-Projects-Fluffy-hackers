@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.View", "HackProject.View\HackProject.View.csproj", "{F64DD50E-3483-4729-8F34-ED6A0E85C90A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.LeapLogic", "HackProject.LeapLogic\HackProject.LeapLogic.csproj", "{5CF4E05B-97BA-42EA-9387-B6E4D0ECA065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.Test", "HackProject.Test\HackProject.Test.csproj", "{C894E0B2-BB02-4480-B4FF-165F5AEBE338}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F64DD50E-3483-4729-8F34-ED6A0E85C90A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64DD50E-3483-4729-8F34-ED6A0E85C90A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64DD50E-3483-4729-8F34-ED6A0E85C90A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64DD50E-3483-4729-8F34-ED6A0E85C90A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CF4E05B-97BA-42EA-9387-B6E4D0ECA065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CF4E05B-97BA-42EA-9387-B6E4D0ECA065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CF4E05B-97BA-42EA-9387-B6E4D0ECA065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CF4E05B-97BA-42EA-9387-B6E4D0ECA065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C894E0B2-BB02-4480-B4FF-165F5AEBE338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C894E0B2-BB02-4480-B4FF-165F5AEBE338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C894E0B2-BB02-4480-B4FF-165F5AEBE338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C894E0B2-BB02-4480-B4FF-165F5AEBE338}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
