@@ -238,8 +238,8 @@ namespace HackProject.Model
                                     var y = (int)(screen.HeightPixels - (yScreenIntersect * screen.HeightPixels));
                                     var position = new Point(x, y);
                                     Signature.Add(position);
-                                    // Move the cursor
-                                    //                  MouseCursor.MoveCursor(x, y);
+                                   // Move the cursor
+                                                     MouseCursor.MoveCursor(x, y);
                                 }
 
                             }

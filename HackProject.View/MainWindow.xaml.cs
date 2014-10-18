@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ConvertVectorIntoImage;
 using HackProject.Model;
 
 namespace HackProject.View
@@ -25,7 +26,7 @@ namespace HackProject.View
         public MainWindow()
         {
             InitializeComponent();
-            _reader=new SignatureReader();
+            _reader = new SignatureReader();
         }
 
         private void StartRead(object sender, RoutedEventArgs e)
@@ -35,11 +36,15 @@ namespace HackProject.View
 
         private void StopRead(object sender, RoutedEventArgs e)
         {
-            var signature=_reader.GetReadSignature();
+            var signature = _reader.GetReadSignature();
             foreach (System.Drawing.Point point in signature)
             {
-                ListOfPositions.Items.Add(point.X+" "+point.Y);
+                ListOfPositions.Items.Add(point.X + " " + point.Y);
+
             }
+            IImageConverter imageConverter = new ImageConverter();
+            imageConverter.ConvertImage(signature);
+           
         }
     }
 }
