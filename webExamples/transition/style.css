@@ -1,0 +1,73 @@
+.circles {
+    float: left;
+    height: 600px; width: 600px;
+    background-color: #eee;
+    margin: 0 50px 50px 0;
+
+    /*Make it a circle*/
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+body {
+margin: 0px;
+}
+
+
+#container {
+
+  background-image: url('houseO.jpg');
+	width: 100%;
+	height: 100vh;
+	 background-size: cover;
+	 background-repeat: no-repeat;
+	 position:relative;
+}
+
+.hoverDot {
+	float: left;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 300px;
+	height: 550px;
+width: 550px;
+	background-color: #eee;
+	margin: 0 50px 50px 0;
+}
+
+#slidingDoors {
+    /*Applying Multiple Background Images*/
+    background-image: url('wood.jpg'), url('wood.jpg'), url('house.jpg');
+    background-repeat: no-repeat;
+
+    /*Positioning the Background Images*/
+    background-position: -24px 0px, 288px 0px, 0px 0px;
+background-size: 327px 582px, 327px 582px, 567px 586px ;
+   /* margin-left: 221px;
+    margin-top: 80px;
+    */
+    position: absolute;
+    margin: auto;
+    top: 34%;
+    left: 6%;
+    right: 0;
+    bottom: 0;
+
+
+/*Transition Parameters*/
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+/*#slidingDoors:hover {
+    background-position: -400px 0px, 800px 0px, 0px 0px;
+}*/
+
+#slidingDoors.swing {
+    background-position: -400px 0px, 800px 0px, 0px 0px;
+}
+
