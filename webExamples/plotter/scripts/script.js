@@ -32,6 +32,16 @@ function draw(data) {
   }
 }
 
+function clear() {
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.height, canvas.width);
+    var w = canvas.width;
+    canvas.width = 1;
+    canvas.width = w;
+}
+
 $( document ).ready(function() {
   draw([[10,10],[20,50],[100,70]]);
+  window.setTimeout(clear,1000);
 });
