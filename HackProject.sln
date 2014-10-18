@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.View", "HackPro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertVectorIntoImage", "ConvertVectorIntoImage\ConvertVectorIntoImage.csproj", "{032E0280-5258-4A1C-895D-329AA816FBC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.Model", "HackProject.Model\HackProject.Model.csproj", "{0C91A060-414D-41DB-9AA3-D1EDCE32DAAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{032E0280-5258-4A1C-895D-329AA816FBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032E0280-5258-4A1C-895D-329AA816FBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032E0280-5258-4A1C-895D-329AA816FBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C91A060-414D-41DB-9AA3-D1EDCE32DAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C91A060-414D-41DB-9AA3-D1EDCE32DAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C91A060-414D-41DB-9AA3-D1EDCE32DAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C91A060-414D-41DB-9AA3-D1EDCE32DAAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
