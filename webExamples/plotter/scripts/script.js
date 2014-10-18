@@ -43,5 +43,5 @@ function clear() {
 
 $( document ).ready(function() {
   draw([[10,10],[20,50],[100,70]]);
-  window.setTimeout(clear,1000);
+  window.setTimeout(clear,10000);
 });
