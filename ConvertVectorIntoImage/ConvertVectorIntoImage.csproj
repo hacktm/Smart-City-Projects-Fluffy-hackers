@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pubnub.3.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Parse">
       <HintPath>..\packages\Parse.1.3.1\lib\net45\Parse.dll</HintPath>
@@ -41,6 +40,7 @@
       <HintPath>..\packages\Parse.1.3.1\lib\net45\Parse.NetFx45.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -63,6 +63,14 @@
       <DependentUpon>InvPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PubnubCore\ClientNetworkStatus.cs" />
+    <Compile Include="PubnubCore\LoggingMethod.cs" />
+    <Compile Include="PubnubCore\MD5.cs" />
+    <Compile Include="PubnubCore\Pubnub.cs" />
+    <Compile Include="PubnubCore\PubnubCore.cs" />
+    <Compile Include="PubnubCore\PubnubWin.cs" />
+    <Compile Include="PubnubCore\ReconnectState.cs" />
+    <Compile Include="PubnubExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="InvPanel.resx">
@@ -70,6 +78,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
