@@ -2,7 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <Button Name="StartButton" Height="23" Content="Start" Click="StartRead"/>
+        <Button Name="StopButton" Height="23" Content="Stop" Click="StopRead"></Button>
+        <ListBox Name="ListOfPositions"></ListBox>
+    </StackPanel>
 </Window>

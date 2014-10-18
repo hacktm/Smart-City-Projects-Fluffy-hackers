@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Leap;
 
 namespace HackProject.Model
@@ -235,10 +236,10 @@ namespace HackProject.Model
                                 {
                                     var x = (int)(xScreenIntersect * screen.WidthPixels);
                                     var y = (int)(screen.HeightPixels - (yScreenIntersect * screen.HeightPixels));
-                                    var position = new Position(x, y);
+                                    var position = new Point(x, y);
                                     Signature.Add(position);
-                                    // Move the cursor
-                                    //                  MouseCursor.MoveCursor(x, y);
+                                   // Move the cursor
+                                                     MouseCursor.MoveCursor(x, y);
                                 }
 
                             }
