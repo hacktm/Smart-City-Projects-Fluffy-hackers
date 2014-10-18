@@ -11,24 +11,28 @@ using Leap;
 
 namespace HackProject.Model
 {
-    class Sample
+    public class SignatureReader
     {
-        public static void Main ()
+        private SignatureListener _listener;
+        private Controller _controller;
+
+        public void WriteSignature()
         {
             // Create a sample listener and controller
-            SampleListener listener = new SampleListener ();
-            Controller controller = new Controller ();
+            _listener = new SignatureListener();
+            _controller = new Controller();
 
             // Have the sample listener receive events from the controller
-            controller.AddListener (listener);
+            _controller.AddListener(_listener);
 
-            // Keep this process running until Enter is pressed
-            Console.WriteLine ("Press Enter to quit...");
-            Console.ReadLine ();
+        }
 
-            // Remove the sample listener when done
-            controller.RemoveListener (listener);
-            controller.Dispose ();
+        public Signature GetReadSignature()
+        {
+            var signature = _listener.Signature;
+            _controller.RemoveListener(_listener);
+            _controller.Dispose();
+            return signature;
         }
     }
 }
