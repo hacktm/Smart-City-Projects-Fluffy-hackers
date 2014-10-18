@@ -34,6 +34,7 @@ margin: 0px;
 width: 550px;
 	background-color: #eee;
 	margin: 0 50px 50px 0;
+	background-position: center bottom;
 }
 
 #slidingDoors {
@@ -43,16 +44,21 @@ width: 550px;
 
     /*Positioning the Background Images*/
     background-position: -24px 0px, 288px 0px, 0px 0px;
-background-size: 327px 582px, 327px 582px, 567px 586px ;
+    background-size: 327px 582px, 327px 582px, 567px 586px ;
    /* margin-left: 221px;
     margin-top: 80px;
     */
     position: absolute;
     margin: auto;
-    top: 34%;
+   /* top: 34%;
     left: 6%;
     right: 0;
-    bottom: 0;
+    bottom: 0;*/
+    bottom: 38px;
+    left: -webkit-calc(50% - 214px);
+
+
+
 
 
 /*Transition Parameters*/
@@ -61,6 +67,23 @@ background-size: 327px 582px, 327px 582px, 567px 586px ;
     -o-transition: all 1s ease-in-out;
     -ms-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out;
+}
+
+/*#ghimp.ghimpiStyle{
+  background-image: url('h1.jpg'), url('ghimpT.png');
+  background-size: 567px 586px, 667px 686px;
+height: 100%;
+border-radius: 200px;
+}*/
+
+#ghimp.ghimpiStyle{
+  background-image:  url('ghimpT.png');
+  background-size: 578px 589px;
+height: 100%;
+border-radius: 200px;
+position: relative;
+bottom: 46px;
+right: 12px;
 }
 
 /*#slidingDoors:hover {
