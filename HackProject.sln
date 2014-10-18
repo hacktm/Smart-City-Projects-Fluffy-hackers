@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.Model", "HackPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackProject.Web", "HackProject.Web\HackProject.Web.csproj", "{DB76F08D-0FAD-4BF7-97EB-CD1EFC99D8A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{18641A74-FFCA-4739-8D8A-87E94CFFBE15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DB76F08D-0FAD-4BF7-97EB-CD1EFC99D8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB76F08D-0FAD-4BF7-97EB-CD1EFC99D8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB76F08D-0FAD-4BF7-97EB-CD1EFC99D8A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18641A74-FFCA-4739-8D8A-87E94CFFBE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18641A74-FFCA-4739-8D8A-87E94CFFBE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18641A74-FFCA-4739-8D8A-87E94CFFBE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18641A74-FFCA-4739-8D8A-87E94CFFBE15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
