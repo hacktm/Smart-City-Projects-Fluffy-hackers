@@ -30,12 +30,12 @@ namespace HackProject.View
         {
             InitializeComponent();
             _reader = new SignatureReader();
-            _reader.WriteSignature();
+            _reader.StartSignatureRecognition();
         }
         
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _reader.StopSignature();
+            _reader.StopSignatureRecognition();
         }
         
 

@@ -2,12 +2,12 @@ using Leap;
 
 namespace HackProject.Model
 {
-    public class SignatureReader
+    public class SignatureReader : ISignatureReader
     {
         private SignatureListener _listener;
         private Controller _controller;
 
-        public void WriteSignature()
+        public void StartSignatureRecognition()
         {
             _listener = new SignatureListener();
             _controller = new Controller();
@@ -16,7 +16,7 @@ namespace HackProject.Model
 
        
 
-        public Signature StopSignature()
+        public Signature StopSignatureRecognition()
         {
             var signature = _listener.Signature;
             _controller.RemoveListener(_listener);
