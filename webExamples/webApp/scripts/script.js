@@ -95,6 +95,6 @@ $( document ).ready(function() {
   initCanvas();
   initPubNub();
 
-  testValidate();
+  //testValidate();
   //window.setTimeout(clear,1000);
 });
