@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -56,6 +57,16 @@ namespace ConvertVectorIntoImage
             {
                 panelToDraw.DrawToBitmap(bitmap, panelToDraw.ClientRectangle);
                 bitmap.Save("E:\\test.bmp", ImageFormat.Bmp);
+                Process myProcess = new Process
+                {
+                    StartInfo = { UseShellExecute = true, FileName = "E:\\test.bmp", CreateNoWindow = true }
+                };
+                // You can start any process, HelloWorld is a do-nothing example.
+                myProcess.Start();
+                // This code assumes the process you are starting will terminate itself.  
+                // Given that is is started without a window so you cannot terminate it  
+                // on the desktop, it must terminate itself or you can do it programmatically 
+                // from this application using the Kill method.
             }
         }
         private void PanelPaint(object sender, PaintEventArgs e)
