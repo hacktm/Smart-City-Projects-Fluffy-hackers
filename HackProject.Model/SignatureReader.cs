@@ -32,6 +32,18 @@ namespace HackProject.Model
             var signature = _listener.Signature;
             _controller.RemoveListener(_listener);
             _controller.Dispose();
+            _controller = null;
+            _listener = null;
+            return signature;
+        }
+
+        public GestureStrings GetGestures()
+        {
+            var signature = _listener.GestureString;
+            _controller.RemoveListener(_listener);
+            _controller.Dispose();
+            _controller = null;
+            _listener = null;
             return signature;
         }
     }
