@@ -46,13 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEvent.cs" />
-    <Compile Include="GestureReader.cs" />
     <Compile Include="MouseCursor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignatureReader.cs" />
     <Compile Include="SignatureListener.cs" />
     <Compile Include="Signature.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConvertVectorIntoImage\ConvertVectorIntoImage.csproj">
+      <Project>{032E0280-5258-4A1C-895D-329AA816FBC0}</Project>
+      <Name>ConvertVectorIntoImage</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

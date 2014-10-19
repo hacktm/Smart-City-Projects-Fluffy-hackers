@@ -1,374 +1,100 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using ConvertVectorIntoImage;
 using Leap;
+using ImageConverter = ConvertVectorIntoImage.ImageConverter;
 
 namespace HackProject.Model
 {
     public class SignatureListener : Listener
     {
-        private Object thisLock = new Object ();
+        private readonly Object _thisLock = new Object();
 
         public Signature Signature
         {
             get { return _signature; }
         }
 
-        public GestureStrings GestureString
+        private void SafeWriteLine(String line)
         {
-            get { return _gestureString; }
-        }
-
-        public event GestureEvent GestureMade;
-
-        private void SafeWriteLine (String line)
-        {
-            lock (thisLock)
+            lock (_thisLock)
             {
-                if (!messageList.Contains(line))
-                {
-                    messageList.Add(line);
-                    Console.WriteLine (line);
-
-                }
+                   Console.WriteLine(line);
             }
         }
 
-        public override void OnInit (Controller controller)
+        public override void OnInit(Controller controller)
         {
-            SafeWriteLine ("Initialized");
+            SafeWriteLine("Initialized");
         }
 
-        public override void OnConnect (Controller controller)  
+        public override void OnConnect(Controller controller)
         {
-            SafeWriteLine ("Connected");
-            controller.EnableGesture (Gesture.GestureType.TYPE_CIRCLE);
-            controller.EnableGesture (Gesture.GestureType.TYPE_KEY_TAP);
-            controller.EnableGesture (Gesture.GestureType.TYPE_SCREEN_TAP);
-            controller.EnableGesture (Gesture.GestureType.TYPE_SWIPE);
-            _canTypePassword = false;
-            _signature=new Signature();
-            _gestureString=new GestureStrings();
+            SafeWriteLine("Connected");
+            controller.EnableGesture(Gesture.GestureType.TYPE_CIRCLE);
+            controller.EnableGesture(Gesture.GestureType.TYPE_KEY_TAP);
+            controller.EnableGesture(Gesture.GestureType.TYPE_SCREEN_TAP);
+            controller.EnableGesture(Gesture.GestureType.TYPE_SWIPE);
+            _signature = new Signature();
         }
 
-        public override void OnDisconnect (Controller controller)
+        public override void OnDisconnect(Controller controller)
         {
             //Note: not dispatched when running in a debugger.
-            SafeWriteLine ("Disconnected");
+            SafeWriteLine("Disconnected");
         }
 
-        public override void OnExit (Controller controller)
+        public override void OnExit(Controller controller)
         {
-            SafeWriteLine ("Exited");
+            SafeWriteLine("Exited");
         }
 
-        List<String> messageList  =new List<string>();
-
-        //public override void OnFrame(Controller controller)
-        //{
-        //    // Get the most recent frame and report some basic information
-        //    Frame frame = controller.Frame();
-
-        //    //SafeWriteLine (
-        //    //    //"Frame id: " + frame.Id
-        //    //    // + ", timestamp: " + frame.Timestamp
-        //    //    ", hands: " + frame.Hands.Count
-        //    //    + ", fingers: " + frame.Fingers.Count
-        //    //    + ", tools: " + frame.Tools.Count
-        //    //    + ", gestures: " + frame.Gestures ().Count);
-
-        //    foreach (Hand hand in frame.Hands)
-        //    {
-        //        //  SafeWriteLine("  Hand id: " + hand.Id
-        //        //                + ", palm position: " + hand.PalmPosition);
-        //        // Get the hand's normal vector and direction
-        //        Vector normal = hand.PalmNormal;
-        //        Vector direction = hand.Direction;
-        //        //foreach (Finger finger in hand.Fingers)
-        //        //{
-        //        //   SafeWriteLine(finger.TipPosition.x.ToString()+finger.TipPosition.y.ToString());
-        //        //}
-        //    }
-        //    //    // Calculate the hand's pitch, roll, and yaw angles
-        //    //    SafeWriteLine ("  Hand pitch: " + direction.Pitch * 180.0f / (float)Math.PI + " degrees, "
-        //    //                   + "roll: " + normal.Roll * 180.0f / (float)Math.PI + " degrees, "
-        //    //                   + "yaw: " + direction.Yaw * 180.0f / (float)Math.PI + " degrees");
-
-        //    //    // Get the Arm bone
-        //    //    Arm arm = hand.Arm;
-        //    //    SafeWriteLine ("  Arm direction: " + arm.Direction
-        //    //                   + ", wrist position: " + arm.WristPosition
-        //    //                   + ", elbow position: " + arm.ElbowPosition);
-
-        //    //    // Get fingers
-        //    //    foreach (Finger finger in hand.Fingers) {
-        //    //        SafeWriteLine ("    Finger id: " + finger.Id
-        //    //                       + ", " + finger.Type().ToString()
-        //    //                       + ", length: " + finger.Length
-        //    //                       + "mm, width: " + finger.Width + "mm");
-
-        //    //        // Get finger bones
-        //    //        Bone bone;
-        //    //        foreach (Bone.BoneType boneType in (Bone.BoneType[]) Enum.GetValues(typeof(Bone.BoneType)))
-        //    //        {
-        //    //            bone = finger.Bone(boneType);
-        //    //            SafeWriteLine("      Bone: " + boneType
-        //    //                          + ", start: " + bone.PrevJoint
-        //    //                          + ", end: " + bone.NextJoint
-        //    //                          + ", direction: " + bone.Direction);
-        //    //        }
-        //    //    }
-
-        //    //}
-
-        //    //foreach (Tool tool in frame.Tools) {
-        //    //    SafeWriteLine ("  Tool id: " + tool.Id
-        //    //                   + ", position: " + tool.TipPosition
-        //    //                   + ", direction " + tool.Direction);
-        //    //}
-
-        //   GestureList gestures = frame.Gestures();
-        //    for (int i = 0; i < gestures.Count; i++)
-        //    {
-        //        Gesture gesture = gestures[i];
-
-        //        switch (gesture.Type)
-        //        {
-        //            case Gesture.GestureType.TYPE_CIRCLE:
-        //                CircleGesture circle = new CircleGesture(gesture);
-
-        //                // Calculate clock direction using the angle between circle normal and pointable
-        //                String clockwiseness;
-        //                if (circle.Pointable.Direction.AngleTo(circle.Normal) <= Math.PI/2)
-        //                {
-        //                    //Clockwise if angle is less than 90 degrees
-        //                    clockwiseness = "clockwise";
-        //                }
-        //                else
-        //                {
-        //                    clockwiseness = "counterclockwise";
-        //                }
-
-        //                float sweptAngle = 0;
-
-        //                // Calculate angle swept since last frame
-        //                if (circle.State != Gesture.GestureState.STATE_START)
-        //                {
-        //                    CircleGesture previousUpdate = new CircleGesture(controller.Frame(1).Gesture(circle.Id));
-        //                    sweptAngle = (circle.Progress - previousUpdate.Progress)*360;
-        //                }
-
-        //                SafeWriteLine("  Circle id: " + circle.Id
-        //                              + ", " + circle.State
-        //                              + ", progress: " + circle.Progress
-        //                              + ", radius: " + circle.Radius
-        //                              + ", angle: " + sweptAngle
-        //                              + ", " + clockwiseness);
-        //                break;
-        //            case Gesture.GestureType.TYPE_SWIPE:
-        //                SwipeGesture swipe = new SwipeGesture(gesture);
-        //                SafeWriteLine("  Swipe id: " + swipe.Id
-        //                              + ", " + swipe.State
-        //                              + ", position: " + swipe.Position
-        //                              + ", direction: " + swipe.Direction
-        //                              + ", speed: " + swipe.Speed);
-        //                break;
-        //            case Gesture.GestureType.TYPE_KEY_TAP:
-        //                KeyTapGesture keytap = new KeyTapGesture(gesture);
-        //                SafeWriteLine("  Tap id: " + keytap.Id
-        //                              + ", " + keytap.State
-        //                              + ", position: " + keytap.Position
-        //                              + ", direction: " + keytap.Direction);
-        //                break;
-        //            case Gesture.GestureType.TYPE_SCREEN_TAP:
-        //                ScreenTapGesture screentap = new ScreenTapGesture(gesture);
-        //                SafeWriteLine("  Tap id: " + screentap.Id
-        //                              + ", " + screentap.State
-        //                              + ", position: " + screentap.Position
-        //                              + ", direction: " + screentap.Direction);
-        //                break;
-        //            default:
-        //                SafeWriteLine("  Unknown gesture type.");
-        //                break;
-        //        }
-        //        //}
-
-        //        if (!frame.Hands.IsEmpty || !frame.Gestures().IsEmpty)
-        //        {
-        //            SafeWriteLine("");
-        //        }
-        //    }
-        //}
-
-        private long currentTime;
-        private long previousTime;
-        private long timeChange;
-        private static bool _canTypePassword;
-        private static SwipeGesture _firstSwipe;
-        private static SwipeGesture _lastSwipe;
+        private long _currentTime;
+        private long _previousTime;
+        private long _timeChange;
         private Signature _signature;
-        private GestureStrings _gestureString;
+
+        private static Point CreatePoint(Controller cntrlr)
+        {
+            if (cntrlr == null) throw new ArgumentNullException("cntrlr", "Leap motion is dissconnected or broken");
+            Frame currentFrame = cntrlr.Frame();
+            const float w = 600;
+            const float h = 400;
+            var pointable = currentFrame.Pointables.Frontmost;
+            var box = currentFrame.InteractionBox;
+            var leapPoint = pointable.StabilizedTipPosition;
+            var normalizedPoint = box.NormalizePoint(leapPoint, false);
+            float x = normalizedPoint.x*w;
+            float y = (1 - normalizedPoint.y)*h;
+            MouseCursor.MoveCursor(Convert.ToInt32(x), Convert.ToInt32(y));
+            return new Point(Convert.ToInt32(x), Convert.ToInt32(y));
+        }
 
         public override void OnFrame(Controller cntrlr)
         {
-            // Get the current frame.
             Frame currentFrame = cntrlr.Frame();
-
-            currentTime = currentFrame.Timestamp;
-            timeChange = currentTime - previousTime;
-
-            if (timeChange > 5000)
+            _currentTime = currentFrame.Timestamp;
+            _timeChange = _currentTime - _previousTime;
+            if (_timeChange > 5000)
             {
                 if (!currentFrame.Hands.IsEmpty)
                 {
-                //    CheckSwipeGesture(currentFrame);
-                 //   if(_canTypePassword)
-                    // Get the first finger in the list of fingers
-                 //   {
-                        Finger finger = currentFrame.Fingers[0];
-                        // Get the closest screen intercepting a ray projecting from the finger
-                        Screen screen = cntrlr.LocatedScreens.ClosestScreenHit(finger);
-
-                    if (screen != null && screen.IsValid)
+                    int count = currentFrame.Fingers.Count(e => e.IsExtended);
+                    if (count > 2)
                     {
-                        // Get the velocity of the finger tip
-                        var tipVelocity = (int) finger.TipVelocity.Magnitude;
-
-                        // Use tipVelocity to reduce jitters when attempting to hold
-                        // the cursor steady
-                        if (tipVelocity > 25)
+                        if (Signature.Count > 5)
                         {
-                            var xScreenIntersect = screen.Intersect(finger, true).x;
-                            var yScreenIntersect = screen.Intersect(finger, true).y;
-
-                            if (xScreenIntersect.ToString() != "NaN")
-                            {
-                                var x = (int) (xScreenIntersect*screen.WidthPixels);
-                                var y = (int) (screen.HeightPixels - (yScreenIntersect*screen.HeightPixels));
-                                var position = new Point(x, y);
-                                _signature.Add(position); //AddPoint(position);
-                             
-                                // Move the cursor
-                              //  MouseCursor.MoveCursor(x, y);
-                            }
-
-
+                            IImageConverter imgConverter = new ImageConverter();
+                            imgConverter.ConvertImage(Signature);
+                            Signature.Clear();
                         }
-
-                        GestureList gestures = currentFrame.Gestures();
-                        for (int i = 0; i < gestures.Count; i++)
-                        {
-                            Gesture gesture = gestures[i];
-
-                            switch (gesture.Type)
-                            {
-                                case Gesture.GestureType.TYPE_CIRCLE:
-                                    CircleGesture circle = new CircleGesture(gesture);
-
-                                    // Calculate clock direction using the angle between circle normal and pointable
-                                    String clockwiseness;
-                                    if (circle.Pointable.Direction.AngleTo(circle.Normal) <= Math.PI/2)
-                                    {
-                                        //Clockwise if angle is less than 90 degrees
-                                        clockwiseness = "clockwise";
-                                    }
-                                    else
-                                    {
-                                        clockwiseness = "counterclockwise";
-                                    }
-
-                                    float sweptAngle = 0;
-
-                                    // Calculate angle swept since last frame
-                                    if (circle.State != Gesture.GestureState.STATE_START)
-                                    {
-                                        CircleGesture previousUpdate =
-                                            new CircleGesture(cntrlr.Frame(1).Gesture(circle.Id));
-                                        sweptAngle = (circle.Progress - previousUpdate.Progress)*360;
-                                    }
-
-                                    GestureMade(this, new GestureEventArgs("circle"));
-                                    break;
-                                case Gesture.GestureType.TYPE_SWIPE:
-                                    SwipeGesture swipe = new SwipeGesture(gesture);
-                                    GestureMade(this, new GestureEventArgs("swipe"));
-                                    break;
-                                case Gesture.GestureType.TYPE_KEY_TAP:
-                                    KeyTapGesture keytap = new KeyTapGesture(gesture);
-                                    GestureMade(this, new GestureEventArgs("tap"));
-                                    break;
-                                case Gesture.GestureType.TYPE_SCREEN_TAP:
-                                    ScreenTapGesture screentap = new ScreenTapGesture(gesture);
-                                  GestureMade(this,new GestureEventArgs("s_tap"));
-                                    break;
-                                default:
-                                    SafeWriteLine("  Unknown gesture type.");
-                                    break;
-                            }
-                        }
+                        return;
                     }
+                    _signature.Add(CreatePoint(cntrlr));
                 }
-
-                //}
-
-                previousTime = currentTime;
+                _previousTime = _currentTime;
             }
         }
-
-        private float _lastSwipeX=0;
-        private float _distance = 0;
-        private bool _toRight = false;
-        private void CheckSwipeGesture(Frame currentFrame)
-        {
-            GestureList gestures = currentFrame.Gestures();
-            for (int i = 0; i < gestures.Count; i++)
-            {
-                Gesture gesture = gestures[i];
-                if (gesture.Type == Gesture.GestureType.TYPE_SWIPE)
-                {
-                    var swipeGesture = new SwipeGesture(gesture);
-                    _distance = Math.Abs(swipeGesture.Position.x) - Math.Abs(_lastSwipeX);
-                    _toRight = swipeGesture.Position.x > _lastSwipeX;
-                    _lastSwipeX = swipeGesture.Position.x;
-                 //   else
-                 //  {
-                      
-                 //   }
-                }
-                    //if (_firstSwipe == null)
-                    //{
-                    //    _firstSwipe = new SwipeGesture(gesture);
-                    //}
-                    //_lastSwipe = new SwipeGesture(gesture);
-                    //if(_firstSwipe.po)
-                    ////                SafeWriteLine("  Swipe id: " + swipe.Id
-                    ////                              + ", " + swipe.State
-                    ////                              + ", position: " + swipe.Position
-                    ////                              + ", direction: " + swipe.Direction
-                    ////                              + ", speed: " + swipe.Speed);
-                }
-            }
-        }
-
-    public delegate void GestureEvent(object sender, GestureEventArgs args);
-
-    public class GestureEventArgs
-    {
-        private readonly string _gestureName;
-
-        public GestureEventArgs(string gestureName)
-        {
-            _gestureName = gestureName;
-        }
-
-        public string GestureName
-        {
-            get { return _gestureName; }
-        }
-    }
-
-    public class GestureStrings : List<string>
-    {
-        
     }
 }

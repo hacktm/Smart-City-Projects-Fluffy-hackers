@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using ConvertVectorIntoImage;
 using HackProject.Model;
+using ImageConverter = ConvertVectorIntoImage.ImageConverter;
 
 namespace HackProject.View
 {
@@ -23,51 +25,19 @@ namespace HackProject.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private SignatureReader _reader;
-        private GestureReader _gestureReader;
+        private readonly SignatureReader _reader;
         public MainWindow()
         {
             InitializeComponent();
             _reader = new SignatureReader();
-            _gestureReader=new GestureReader();
+            _reader.WriteSignature();
         }
-
-        private void GestureMade(object sender, GestureEventArgs args)
+        
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!Dispatcher.CheckAccess())
-            {
-                Dispatcher.Invoke(
-                        () => ListOfPositions.Items.Add(args.GestureName), DispatcherPriority.Normal);
-            }
-          //  ListOfPositions.Items.Add(args.GestureName);
+            _reader.StopSignature();
         }
+        
 
-        private void StartRead(object sender, RoutedEventArgs e)
-        {
-            //_reader.WriteSignature();
-            _gestureReader.Start(GestureMade);
-        }
-
-        private void StopRead(object sender, RoutedEventArgs e)
-        {
-            //var signature = _reader.GetReadSignature();
-            _gestureReader.Stop();
-            //var gestures = _reader.GetGestures();
-            //foreach (string s in gestures)
-            //{
-            //    ListOfPositions.Items.Add(s);
-            //  //  IImageConverter imgConverter=new ImageConverter();
-            //   // imgConverter.ConvertImage(signature);
-            //}
-        }
-
-
-        private void StartTestRead(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void StopTestRead(object sender, RoutedEventArgs e)
-        {
-        }
     }
 }
