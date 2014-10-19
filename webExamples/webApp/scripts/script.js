@@ -20,6 +20,7 @@ function initPubNub() {
         points.push(new Point(parseInt(values[0]), parseInt(values[1])));
       } else {
         validate();
+        // activate this in order to store the data to the LocalStorage
         //store();
       }
     }
