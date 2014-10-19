@@ -30,7 +30,7 @@ function initPubNub() {
 //------------------------------------------------------------------------------
 function point(x, y) {
   ctx.beginPath();
-  ctx.arc(x/2, y/2, 15, 0, 2 * Math.PI, true);
+  ctx.arc(x/2, y/2, 5, 0, 2 * Math.PI, true);
 
   ctx.fillStyle = color;
   ctx.fill();
@@ -63,7 +63,7 @@ function validate() {
   console.log("result of test : " + result.Name + " score " + result.Score);
 
   // also added pigtail to the result detection because it's similar to circle
-  if((result.Name === "circle" || result.Name === "pigtail") && result.Score > 0.4) {
+  if((result.Name === "circle" || result.Name === "pigtail" || result.Name === "triangle") && result.Score > 0.4) {
     console.log("PASSWORD ACCEPTED!");
     openDoor();
   }
