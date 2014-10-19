@@ -1,6 +1,5 @@
 function toggleDoor() {
   $("#slidingDoors").toggleClass('swing');
-
 }
 
 function ghimpiF() {
