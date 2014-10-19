@@ -34,8 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EyeOpen.Imaging.Processing">
+      <HintPath>..\..\SDK\EyeOpen.Imaging.Processing.dll</HintPath>
+    </Reference>
     <Reference Include="LeapCSharp.NET4.0">
-      <HintPath>$(LEAP_SDK)\lib\LeapCSharp.NET4.0.dll</HintPath>
+      <HintPath>..\..\LeapSDK\lib\LeapCSharp.NET4.0.dll</HintPath>
     </Reference>
     <Reference Include="Parse, Version=1.3.1.0, Culture=neutral, PublicKeyToken=ba48c3a442de616e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
