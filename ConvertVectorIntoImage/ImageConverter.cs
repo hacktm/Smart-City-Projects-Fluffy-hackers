@@ -8,7 +8,7 @@ namespace ConvertVectorIntoImage
     {
         public void ConvertImage(List<Point> arrayOfPoints)
         {
-            var form = new InvPanel(arrayOfPoints);
+            var form = new InvPanel {ListOfPoints = arrayOfPoints};
             SendToParse(arrayOfPoints);
             form.Show();
         }
