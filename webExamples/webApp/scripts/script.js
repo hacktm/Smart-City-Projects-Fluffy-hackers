@@ -48,6 +48,10 @@ function initCanvas() {
   ctx.canvas.height = window.innerHeight;
 }
 
+function openDoor() {
+  $("#slidingDoors").addClass('swing');
+}
+
 //------------------------------------------------------------------------------
 function clearpoints() {
   points = [];
@@ -57,12 +61,13 @@ function validate() {
   var result = validator.Recognize(points, false);
   console.log("result of test : " + result.Name + " score " + result.Score);
 
-  // EXAMPLE, PASSWORD IS X
-  if(result.Name === "circle" && result.Score > 0.4) {
-    window.alert("PASSWORD ACCEPTED!");
-    $("#slidingDoors").addClass('swing');
+  // also added pigtail to the result detection because it's similar to circle
+  if((result.Name === "circle" || result.Name === "pigtail") && result.Score > 0.4) {
+    console.log("PASSWORD ACCEPTED!");
+    openDoor();
   }
-  // after validation we need to clear the points + erase the canvas
+  // after validation we need to clear the points + erase the canvas after a
+  // 5 second timeout
   clearpoints();
   window.setTimeout(clear,5000);
 }
@@ -88,6 +93,7 @@ function testValidate() {
 $( document ).ready(function() {
   initCanvas();
   initPubNub();
+
   //testValidate();
   //window.setTimeout(clear,1000);
 });
