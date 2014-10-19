@@ -217,7 +217,7 @@ namespace HackProject.Model
             currentTime = currentFrame.Timestamp;
             timeChange = currentTime - previousTime;
 
-            if (timeChange > 10000)
+            if (timeChange > 5000)
             {
                 if (!currentFrame.Hands.IsEmpty)
                 {
