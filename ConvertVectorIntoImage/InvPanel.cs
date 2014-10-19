@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -16,9 +17,12 @@ namespace ConvertVectorIntoImage
             set
             {
                 _listOfPoints = value;
+#if DEBUG
                 DrawPoints(value);
                 Invalidate();
                 SaveImage();
+#endif
+
             }
         }
 
@@ -41,12 +45,12 @@ namespace ConvertVectorIntoImage
             Graphics panel = Graphics.FromImage(_drawing);
             for (int i = 0; i < pointToDraw.Count - 1; i++)
             {
+                if (pointToDraw[i].X >= 0 && pointToDraw[i].Y >= 0 && pointToDraw[i].X >= _drawing.Width && pointToDraw[i].Y >= _drawing.Height)
+                { _drawing.SetPixel(pointToDraw[i].X, pointToDraw[i].Y, Color.Black); }
 
-                _drawing.SetPixel(pointToDraw[i].X/3, pointToDraw[i].Y/3, Color.Black);
-                
-                //var pen = new Pen(Color.Black, 14) { EndCap = LineCap.Round, StartCap = LineCap.Round };
-                //panel.DrawLine(pen, pointToDraw[i].X/3, pointToDraw[i].Y/3, pointToDraw[i + 1].X/3,
-                //    pointToDraw[i + 1].Y/3 );
+                var pen = new Pen(Color.Black, 14) { EndCap = LineCap.Round, StartCap = LineCap.Round };
+                panel.DrawLine(pen, pointToDraw[i].X / 3, pointToDraw[i].Y / 3, pointToDraw[i + 1].X / 3,
+                    pointToDraw[i + 1].Y / 3);
             }
             panelToDraw.CreateGraphics().DrawImage(_drawing, new Point(0, 0));
         }
@@ -56,10 +60,10 @@ namespace ConvertVectorIntoImage
                                   panelToDraw.ClientSize.Height))
             {
                 panelToDraw.DrawToBitmap(bitmap, panelToDraw.ClientRectangle);
-                bitmap.Save("E:\\test.bmp", ImageFormat.Bmp);
+                bitmap.Save("D:\\test.bmp", ImageFormat.Bmp);
                 Process myProcess = new Process
                 {
-                    StartInfo = { UseShellExecute = true, FileName = "E:\\test.bmp", CreateNoWindow = true }
+                    StartInfo = { UseShellExecute = true, FileName = "D:\\test.bmp", CreateNoWindow = true }
                 };
                 // You can start any process, HelloWorld is a do-nothing example.
                 myProcess.Start();
